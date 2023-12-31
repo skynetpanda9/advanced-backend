@@ -9,7 +9,7 @@ cloudinary.config({
 
 const uploadOnCloudinary = async (localFilePath) => {
   try {
-    if (!localFilePath) return;
+    if (!localFilePath) return null;
     // using stream to upload file to cloudinary
     // const stream = fs.createReadStream(localFilePath);
     // const result = await cloudinary.uploader.upload_stream(
@@ -27,7 +27,7 @@ const uploadOnCloudinary = async (localFilePath) => {
       resource_type: "auto",
     });
     console.log("file uploaded successfully", result.url);
-    fs.unlinkSync(localFilePath);
+    // fs.unlinkSync(localFilePath);
     return result;
   } catch (error) {
     fs.unlinkSync(localFilePath);
@@ -35,4 +35,4 @@ const uploadOnCloudinary = async (localFilePath) => {
   }
 };
 
-export default uploadOnCloudinary;
+export { uploadOnCloudinary };
