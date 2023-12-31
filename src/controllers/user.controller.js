@@ -70,7 +70,7 @@ const loginUser = asyncHandler(async (req, res, next) => {
     );
 });
 
-const logoutUser = asyncHandler(async (req, res, next) => {
+const logoutUser = asyncHandler(async (req, res) => {
   const { _id } = req.user;
 
   await User.findByIdAndUpdate(
